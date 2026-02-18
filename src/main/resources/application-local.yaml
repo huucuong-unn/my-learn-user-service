@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: user-service
+  datasource:
+    url: jdbc:postgresql://localhost:5432/mylearndb
+    username: myuser
+    password: mypassword
+    hikari:
+      schema: user_service
+    driver-class-name: org.postgresql.Driver
