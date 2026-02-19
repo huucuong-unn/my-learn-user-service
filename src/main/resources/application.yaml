@@ -2,6 +2,7 @@ server:
   port: 8081
   servlet:
     context-path: /user-service
+  shutdown: graceful
 
 spring:
   application:
@@ -29,3 +30,17 @@ spring:
     baseline-on-migrate: true
     baseline-version: 0
     schemas: user_service
+
+management:
+  endpoints:
+    web:
+      exposure:
+        # Expose only health for security; metrics/info can be added later
+        include: health
+  endpoint:
+    health:
+      # Enables /actuator/health/liveness and /actuator/health/readiness
+      probes:
+        enabled: true
+      # Shows detailed health info (useful for debugging, can be restricted in prod)
+      show-details: always
